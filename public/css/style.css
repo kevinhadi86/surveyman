@@ -1,0 +1,275 @@
+header, body
+{
+	font-family: sans-serif;
+	box-sizing: border-box;
+}
+
+body, nav, div, main, header, footer
+{
+	padding: 0;
+	margin: 0;
+}
+
+body
+{
+	width: 100%;
+}
+
+body a
+{
+	text-decoration: none;
+	color: inherit;
+}
+
+header
+{
+	background-color: #42b549;
+	display: flex;
+	align-items: center;
+	padding: 10px 5%;
+	justify-content: space-between;
+	position: sticky;
+	top: 0;
+	z-index: 100;
+}
+
+.logo
+{
+	display: flex;
+	align-items: center;
+	flex-basis: 100%;
+}
+
+.icon img
+{
+	width: 50px;
+	height: 50px;
+}
+
+.brandName
+{
+	display: flex;
+	align-self: center;
+	font-size: 30px;
+	font-family: serif;
+	font-weight: bold;
+	padding: 0 10px;
+}
+
+.navContainer
+{
+	display: flex;
+	flex-basis: 100%;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+nav
+{
+	display: flex;
+	flex-basis: 20%;
+	justify-content: space-between;
+	height: 50px;
+	align-items: center;
+	padding: 0 1%;
+}
+
+.navItems
+{
+	display: flex;
+	align-items: center;
+	font-weight: bold;
+	height: 40px;
+}
+
+.active
+{
+	box-shadow: 0 2px 0 white;
+}
+
+.searchBar
+{
+	display: flex;
+	justify-content: center;
+	padding: 0 1%;
+}
+
+.searchBar input
+{
+	padding: 5px 8px;
+	padding-right: 17%;
+	border-radius: 10px;
+	border-style: solid;
+	border: 0px;
+	font-size: 15px;
+	width: 85%;
+	background-image: url('assets/searchicon.png');
+	background-position: 95% 50%;
+	background-size: 15px;
+	background-repeat: no-repeat;
+}
+
+.accountManagement
+{
+	display: flex;
+	flex-basis: 12%;
+	align-items: center;
+	align-self: center;
+	font-weight: bold;
+	justify-content: space-between;
+	height: 40px;
+}
+
+.LoginButton, .RegisterButton
+{
+	display: flex;
+	display: flex;
+	align-items: center;
+	padding: 0 15px;
+	height: 35px;
+}
+
+.yellowHover:hover
+{
+	border-radius: 100px;
+	background-color: yellow;
+	box-shadow: 0 0 10px 5px white;
+}
+
+.introduction
+{
+	background-color: #42b549;
+	background-image: url('assets/surveys.png');
+	background-size: 250px;
+	background-position: 90% 100%;
+	background-repeat: no-repeat;
+	height: 250px;
+	padding: 10px 5%;
+	display: flex;
+	align-items: flex-start;
+}
+
+.introductionText
+{
+	display: flex;
+	justify-content: space-around;
+	flex-direction: column;
+	height: 80%;
+}
+
+.introductionTitle
+{
+	padding: 5px;
+	font-size: 30px;
+	display: flex;
+	flex-wrap: wrap;
+	width: 50%;
+	font-weight: bold;
+}
+
+.introductionBody
+{
+	padding: 5px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.getStartedButton
+{
+	padding: 5px;
+	font-size: 25px;
+	font-weight: bold;
+	width: 20%;
+	padding: 5px 5px;
+	text-align: center;
+}
+
+
+.advantage
+{
+	background-color: white;
+	padding: 10px 5%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	min-height: 300px;
+}
+
+.advantageContainer
+{
+	position: absolute;
+	z-index: 5;
+	top: 310px;
+	background-color: #ededed;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 90%;
+	height: 270px;
+	border-radius: 20px;
+	box-shadow: 0 0 10px 5px #ededed;
+}
+
+.advantageContent
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding-bottom: 30px;
+}
+
+.advantageTitle
+{
+	font-size: 25px;
+	font-weight: bold;
+	padding: 5px;
+}
+
+.advantageImg img
+{
+	width: 60px;
+	height: 60px;
+	padding: 5px;
+}
+
+.advantageText
+{
+	text-align: justify;
+	font-size: 16px;
+	padding: 5px;
+}
+
+.homeQuotes
+{
+	padding: 20px;
+	display: flex;
+	flex-basis: 100%;
+	align-items: center;
+	flex-direction: column;
+	height: 100px;
+}
+
+.italicText
+{
+	color: #42b549;
+	font-style: italic;
+	font-size: 20px;
+	font-family: cursive;
+}
+
+.footerAuthor
+{
+	color: #42b549;
+	font-family: monospace;
+	font-size: 20px;
+}
+
+footer
+{
+	min-height: 50px;
+	background-color: #42b549;
+	position: sticky;
+	bottom: 0;
+	z-index: 100;
+}
