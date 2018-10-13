@@ -6,33 +6,25 @@
 </head>
 <body>
 	<header>
-		<a href="#">
-			<div class="logo">
-				<div class="icon">
-					<img src="assets/Icon_SurveyMan.png">
-				</div>
-				<div class="brandName">
-					SurveyMan
-				</div>
+		<div class="logo cursorPointer">
+			<div class="icon">
+				<img src="assets/Icon_SurveyMan.png">
 			</div>
-		</a>
+			<div class="brandName">
+				SurveyMan
+			</div>
+		</div>
 		<div class="navContainer">
 			<nav>
-				<a href="#">
-					<div class="navItems active" id="navHome" onclick="changeNav('navHome')">
+					<div class="navItems cursorPointer active" id="navHome" onclick="changeNav('navHome')">
 						Home
 					</div>
-				</a>
-				<a href="#">
-					<div class="navItems" id="navServices" onclick="changeNav('navServices')">
+					<div class="navItems cursorPointer" id="navServices" onclick="changeNav('navServices')">
 						Services
 					</div>
-				</a>
-				<a href="#">
-					<div class="navItems" id="navAbout" onclick="changeNav('navAbout')">
+					<div class="navItems cursorPointer" id="navAbout" onclick="changeNav('navAbout')">
 						About
 					</div>
-				</a>
 			</nav>
 			<div class="searchBar">
 				<input type="text" name="surveySearch">
@@ -53,7 +45,7 @@
 	</header>
 
 	<main>
-		<div class="home">
+		<div id="home">
 			<div class="introduction">
 				<div class="introductionText">
 					<div class="introductionTitle">
@@ -123,6 +115,106 @@
 			</div>
 			
 		</div>
+
+		<div id="services">
+			<div class="service">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+		</div>
+
+		<div id="aboutUs">
+			<div class="description">
+				<div class="slider">
+					<div class="descriptionContainer" id="sliderItem">
+						<div class="descriptionText">
+							<div class="aboutTitle">
+								ABOUT US
+							</div>
+							<div class="aboutDescription">
+								Surveyman is blalblablablablansajnsjandsandjsndwesndioednjied<br>
+								dbshabdjasdjsandskjdkajdkldjbhbhkbjbjkbjbjbjjkbjkb
+							</div>
+						</div>
+						<div class="descriptionText">
+							<div class="aboutTitle">
+								VISION
+							</div>
+							<div class="aboutDescription">
+								Surveyman vision is blalblablablablansajnsjandsandjsndwesndioednjied<br>
+								dbshabdjasdjsandskjdkajdkldjbhbhkbjbjkbjbjbjjkbjkb
+							</div>
+						</div>
+						<div class="descriptionText">
+							<div class="aboutTitle">
+								MISSION
+							</div>
+							<div class="aboutDescription">
+								Surveyman mission is blalblablablablansajnsjandsandjsndwesndioednjied<br>
+								dbshabdjasdjsandskjdkajdkldjbhbhkbjbjkbjbjbjjkbjkb
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				<div class="scrollButtonContainer">
+					<div class="scrollButton cursorPointer aboutActive" id="about1" onclick="changeAbout('about1')"></div>
+					<div class="scrollButton cursorPointer" id="about2" onclick="changeAbout('about2')"></div>
+					<div class="scrollButton cursorPointer" id="about3" onclick="changeAbout('about3')"></div>
+				</div>
+			</div>
+			<div class="projectTeam">
+				<div class="teamTitle">
+					OUR TEAM
+				</div>
+				<div class="teamMember">
+					<div class="member">
+						<div class="memberImgContainer"><img src="assets/fotoDennis.jpg"></div>
+						Timoteus Dennis<br>
+						<div class="memberPosition">
+							Front-End<br>
+							Developer
+						</div>
+					</div>
+					<div class="member">
+						<div class="memberImgContainer"><img src="assets/fotoBernado.jpg"></div>
+						Bernado
+						<div class="memberPosition">
+							Front-End<br>
+							Developer
+						</div>
+					</div>
+					<div class="member">
+						<div class="memberImgContainer"><img src="assets/fotoKevin.jpg"></div>
+						Kevin Hadinata
+						<div class="memberPosition">
+							Project Leader<br>
+							Back-End<br>
+							Developer
+						</div>
+					</div>
+					<div class="member">
+						<div class="memberImgContainer"><img src="assets/fotoRicky.jpg"></div>
+						Ricky Wijaya
+						<div class="memberPosition">
+							Back-End<br>
+							Developer
+						</div>
+					</div>
+					<div class="member">
+						<div class="memberImgContainer"><img src="assets/fotoAyu.jpg"></div>
+						Wahyu Ramadani
+						<div class="memberPosition">
+							Interface<br>
+							Designer
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</main>
 
 	<footer>
