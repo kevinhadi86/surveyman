@@ -3,6 +3,7 @@
 <head>
 	<title>SurveyMan - Your Gateway to an Easier Survey Distribution</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
+	<script src="{{asset('js/jquery-3.3.1.js')}}"></script>
 </head>
 <body>
 	<header>
@@ -171,7 +172,7 @@
 				</div>
 				<div class="teamMember">
 					<div class="member">
-						<div class="memberImgContainer"><img src="assets/fotoDennis.jpg"></div>
+						<div class="memberImgContainer"><img src="{{url('/assets/fotoDennis.jpg')}}"></div>
 						Timoteus Dennis<br>
 						<div class="memberPosition">
 							Front-End<br>
@@ -179,7 +180,7 @@
 						</div>
 					</div>
 					<div class="member">
-						<div class="memberImgContainer"><img src="assets/fotoBernado.jpg"></div>
+						<div class="memberImgContainer"><img src="{{url('/assets/fotoBernado.jpg')}}"></div>
 						Bernado
 						<div class="memberPosition">
 							Front-End<br>
@@ -187,7 +188,7 @@
 						</div>
 					</div>
 					<div class="member">
-						<div class="memberImgContainer"><img src="assets/fotoKevin.jpg"></div>
+						<div class="memberImgContainer"><img src="{{url('/assets/fotoKevin.jpg')}}"></div>
 						Kevin Hadinata
 						<div class="memberPosition">
 							Project Leader<br>
@@ -196,7 +197,7 @@
 						</div>
 					</div>
 					<div class="member">
-						<div class="memberImgContainer"><img src="assets/fotoRicky.jpg"></div>
+						<div class="memberImgContainer"><img src="{{url('/assets/fotoRicky.jpg')}}"></div>
 						Ricky Wijaya
 						<div class="memberPosition">
 							Back-End<br>
@@ -204,7 +205,7 @@
 						</div>
 					</div>
 					<div class="member">
-						<div class="memberImgContainer"><img src="assets/fotoAyu.jpg"></div>
+						<div class="memberImgContainer"><img src="{{url('/assets/fotoAyu.jpg')}}"></div>
 						Wahyu Ramadani
 						<div class="memberPosition">
 							Interface<br>
