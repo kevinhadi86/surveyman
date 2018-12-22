@@ -48,8 +48,8 @@ class UserController extends Controller
     	return view('login');
     }
     public function login(Request $request){
-    	$data = User::where('email',$request->email)->first();
-    	if(count($data)>0){
+        $data = User::where('email',$request->email)->first();
+    	if(!empty($data)){
     		if ($request->password == $data->password) {
     			Session::put('user_id', $data->id);
     			Session::put('name', $data->firstname);

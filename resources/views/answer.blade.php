@@ -74,29 +74,25 @@
                     // console.log($('#answer'+(i+1)).attr('class'));
                     arr[i] = $('input[name="answer'+question_id+'"]').val();
                 }
+            }
                 // console.log("arr["+i+"]: "+arr[i]);
                 let url = "{{url('api/form')}}"+"/"+"{{$form->id}}"+"/answer/submit";
-                {{--let url= "http://localhost/surveyman/public/api/form/{{$form->id}}/answer/submit";--}}
                 $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
                     url:url,
                     type: "POST",
                     data: {
                         'user':user_id,
                         'q_id':id,
                         'data':arr,
+                        '_token' : '{{csrf_field()}}',
                     },
                     success: function(resp){
                         console.log(resp);
                         alert("Berhasil!");
                     }
                 });
-                e.preventDefault();
-            }
-        })
-    })
+        });
+    });
 </script>
 </body>
 </html>

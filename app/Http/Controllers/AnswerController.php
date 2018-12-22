@@ -44,10 +44,7 @@ class AnswerController extends Controller
     {
 
         $answers=$request->all();
-//        dd(count($answers['arr']));
-//        dd($id);
-//        $answer="";
-        $count = count($answers['arr']);
+        $count = count($answers['data']);
 //        dd($request->user);
         for($i=0;$i<$count;$i++){
             $answer= new Answer;
@@ -56,7 +53,7 @@ class AnswerController extends Controller
             $answer->form_id = $id;
             $answer->question_id = $answers['q_id'][$i];
 //            dd($answers['q_id'][$i]);
-            $answer->answer = $answers['arr'][$i];
+            $answer->answer = $answers['data'][$i];
 //            dd($answers['arr'][$i]);
             $answer->save();
 //            dd($answer);
