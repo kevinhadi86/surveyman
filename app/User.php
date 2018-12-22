@@ -6,6 +6,9 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * @method static where(string $string, $id)
+ */
 class User extends Authenticatable
 {
     use Notifiable;
@@ -16,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'firstname', 'lastname', 'gender', 'email', 'birthdate', 'occupation', 'password'
     ];
 
     /**
@@ -27,4 +30,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function tag(){
+        return $this->hasOne('App\UserTag');
+    }
+    public function forms(){
+        return $this->hasMany('App\Form');
+    }
 }

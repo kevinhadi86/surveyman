@@ -186,119 +186,146 @@ $(document).ready(function(){
     $(this).scrollTop(0);
     activePage = 0;
     wait = true;
+
 });
 
 function delayBy(time){
-	wait = false;
-	$(this).delay(time).queue(function(){
-		wait = true;
-		$(this).dequeue();
-	});
+    wait = false;
+    $(this).delay(time).queue(function(){
+        wait = true;
+        $(this).dequeue();
+    });
 }
 
 function scrollPageTo(target)
 {
-	if(target == 0)
-	{
-		$("html, body").animate({
-			scrollTop: $("#home").offset().top - 74
-		}, 1000);
-		delayBy(1000);
-		changeNavBar("navHome");
-	}
-	else if(target == 1)
-	{
-		$("html, body").animate({
-			scrollTop: $("#services").offset().top - 74
-		}, 1000);
-		delayBy(1000);
-		changeNavBar("navServices");
-	}
-	else if(target == 2)
-	{
-		$("html, body").animate({
-			scrollTop: $("#aboutUs").offset().top - 74
-		}, 1000);
-		delayBy(1000);
-		changeNavBar("navAbout");
-	}
+    if(target == 0)
+    {
+        $("html, body").animate({
+            scrollTop: $("#home").offset().top - $("header").height()
+        }, 1000);
+        delayBy(1000);
+        changeNavBar("navHome");
+    }
+    else if(target == 1)
+    {
+        $("html, body").animate({
+            scrollTop: $("#services").offset().top - $("header").height()
+        }, 1000);
+        delayBy(1000);
+        changeNavBar("navServices");
+    }
+    else if(target == 2)
+    {
+        $("html, body").animate({
+            scrollTop: $("#aboutUs").offset().top - $("header").height()
+        }, 1000);
+        delayBy(1000);
+        changeNavBar("navAbout");
+    }
 }
 
 $(window).on('wheel', function(e){
-	var delta = e.originalEvent.deltaY;
-	if(wait == true)
-	{
-		if(delta > 0)
-		{
-			if(activePage <= 1)
-			{
-				activePage++;
-				scrollPageTo(activePage);
-			}
-		}
-		else if(delta < 0)
-		{
-			if(activePage >= 1)
-			{
-				activePage--;
-				scrollPageTo(activePage);
-			}
-		}
-	}
+    var delta = e.originalEvent.deltaY;
+    if(wait == true)
+    {
+        if(delta > 0)
+        {
+            if(activePage <= 1)
+            {
+                activePage++;
+                scrollPageTo(activePage);
+            }
+        }
+        else if(delta < 0)
+        {
+            if(activePage >= 1)
+            {
+                activePage--;
+                scrollPageTo(activePage);
+            }
+        }
+    }
 });
 
 function changeNav(divId)
 {
-	if(wait == true)
-	{
-		changeNavBar(divId);
-		if(divId == "navHome")
-		{
-			activePage = 0;
-		}
-		else if(divId == "navServices")
-		{
-			activePage = 1;
-		}
-		else if(divId == "navAbout")
-		{
-			activePage = 2;
-		}
-		scrollPageTo(activePage);
-	}
+    if(wait == true)
+    {
+        changeNavBar(divId);
+        if(divId == "navHome")
+        {
+            activePage = 0;
+        }
+        else if(divId == "navServices")
+        {
+            activePage = 1;
+        }
+        else if(divId == "navAbout")
+        {
+            activePage = 2;
+        }
+        scrollPageTo(activePage);
+    }
+}
+
+function goHome(divId)
+{
+    changeNavBar(divId);
+    window.location = "home";
 }
 
 function changeNavBar(divId)
 {
-	$("#navHome").removeClass("active");
-	$("#navServices").removeClass("active");
-	$("#navAbout").removeClass("active");
-	$("#" + divId).addClass("active");
+    $("#navHome").removeClass("active");
+    $("#navServices").removeClass("active");
+    $("#navAbout").removeClass("active");
+    $("#" + divId).addClass("active");
 }
 
 function changeAbout(divId)
 {
-	if(wait == true)
-	{
-		$("#about1").removeClass("aboutActive");
-		$("#about2").removeClass("aboutActive");
-		$("#about3").removeClass("aboutActive");
-		$("#" + divId).addClass("aboutActive");
+    if(wait == true)
+    {
+        $("#about1").removeClass("aboutActive");
+        $("#about2").removeClass("aboutActive");
+        $("#about3").removeClass("aboutActive");
+        $("#" + divId).addClass("aboutActive");
 
-		var target = 0;
-		if(divId == "about1")
-		{
-			target = 0
-		}
-		else if(divId == "about2")
-		{
-			target = 100
-		}
-		else if(divId == "about3")
-		{
-			target = 200
-		}
-		$("#sliderItem").animate({'right': target + '%'}, 500);
-		delayBy(500);
-	}
+        var target = 0;
+        if(divId == "about1")
+        {
+            target = 0
+        }
+        else if(divId == "about2")
+        {
+            target = 100
+        }
+        else if(divId == "about3")
+        {
+            target = 200
+        }
+        $("#sliderItem").animate({'right': target + '%'}, 500);
+        delayBy(500);
+    }
+}
+
+function moveCover(divId)
+{
+    if(wait == true)
+    {
+
+        if(divId == 'login')
+        {
+            targetPosition = 50;
+        }
+        else if(divId == 'signUp')
+        {
+            targetPosition = 10;
+        }
+        $("#inactiveCover").animate({
+            left: targetPosition + '%'
+        }, 500);
+        delayBy(500);
+    }
 }

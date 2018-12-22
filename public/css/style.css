@@ -39,6 +39,13 @@ header
 	display: none;
 }
 
+.w100
+{
+	width: 100%;
+}
+.margin0{
+	margin: 0;
+}
 .cursorPointer
 {
 	cursor: pointer;
@@ -114,7 +121,7 @@ nav
 	border: 0px;
 	font-size: 15px;
 	width: 85%;
-	background-image: url('assets/searchicon.png');
+	background-image: url('../assets/searchicon.png');
 	background-position: 95% 50%;
 	background-size: 15px;
 	background-repeat: no-repeat;
@@ -134,7 +141,6 @@ nav
 .LoginButton, .RegisterButton
 {
 	display: flex;
-	display: flex;
 	align-items: center;
 	padding: 0 15px;
 	height: 35px;
@@ -151,14 +157,11 @@ nav
 {
 	height: 83vh;
 }
-#aboutUs{
-	margin-top: 100px !important;
-}
 
 .introduction
 {
 	background-color: #42b549;
-	background-image: url('assets/surveys.png');
+	background-image: url('../assets/surveys.png');
 	background-size: contain;
 	background-position: 90% 100%;
 	background-repeat: no-repeat;
@@ -205,7 +208,6 @@ nav
 	font-size: 25px;
 	font-weight: bold;
 	width: 100%;
-	padding: 5px 5px;
 	text-align: center;
 }
 
@@ -404,7 +406,7 @@ nav
 
 .descriptionContainer
 {
-	right: 0%;
+	right: 0;
 	width: 300%;
 	height: 150px;
 	display: flex;
@@ -428,7 +430,7 @@ nav
 }
 
 .aboutDescription
-{	
+{
 	text-align: center;
 	color: white;
 }
@@ -509,8 +511,7 @@ nav
 	border-radius: 300px;
 	width: 100px;
 	height: 100px;
-	margin: 0 auto;
-	margin-top: 15%;
+	margin: 15% auto 0;
 }
 
 .memberImgContainer img
@@ -518,6 +519,134 @@ nav
 	width: 100px;
 	height: auto;
 	object-fit: cover;
+}
+
+#signUpPage
+{
+	padding: 0 10%;
+	height: 83vh;
+	display: flex;
+	width: 80%;
+}
+
+.padV3c
+{
+	padding: 3% 0;
+}
+
+.padV2c
+{
+	padding: 2% 0;
+}
+
+.signUpText
+{
+	color: #42b549;
+}
+
+.padV5p
+{
+	padding: 5px 0;
+}
+
+.padV10p
+{
+	padding: 10px 0;
+}
+
+.signUpForm
+{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	min-height: 52vh;
+}
+
+.nameForm input
+{
+	width: 44%;
+}
+
+.emailForm input, .occupationForm input, .passForm input
+{
+	width: 95.5%;
+}
+
+.genderForm, .nameForm
+{
+	display: flex;
+	justify-content: space-between;
+}
+
+.nameForm, .emailForm, .genderForm, .birthForm, .occupationForm, .passForm
+{
+	width: 100%;
+}
+
+.genderMale, .genderFemale
+{
+	width: 44%;
+	display: flex;
+	align-items: center;
+}
+
+.genderForm input
+{
+	cursor: pointer;
+	height: 16px;
+	width: 16px;
+	margin: 0 5px 0 0;
+}
+
+.birthForm input
+{
+	width: 95.5%;
+}
+
+#signUpPage input, .genderMale, .genderFemale
+{
+	border: 2px solid #42b549;
+	font-size: 16px;
+	padding: 10px 2%;
+}
+
+#signUp, #login
+{
+	width: 100%;
+	padding: 10px 5%;
+}
+
+.signUpButton
+{
+	margin: 20px 40%;
+	border-radius: 10px;
+	font-weight: bold;
+	width: 20%;
+	color: white;
+	background-color: #42b549;
+	text-align: center;
+	padding: 10px;
+}
+
+#inactiveCover
+{
+	height: 83vh;
+	width: 40%;
+	background: url(../assets/ilustrasisignup.jpg) round;
+	position: absolute;
+	top: 10vh;
+	left: 10%;
+	z-index: 10;
+}
+
+#loginsignupSwitch
+{
+	display: flex;
+	justify-content: space-around;
+	position: absolute;
+	bottom: 10vh;
 }
 
 footer
