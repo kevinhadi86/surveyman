@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Answer;
 use App\Form;
+use App\History;
 use App\Question;
+use App\User;
+use App\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -42,26 +45,29 @@ class AnswerController extends Controller
      */
     public function store(Request $request,$id)
     {
-
         $answers=$request->all();
-//        dd(count($answers['arr']));
-//        dd($id);
-//        $answer="";
-        $count = count($answers['arr']);
-//        dd($request->user);
+        $count = count($answers['data']);
         for($i=0;$i<$count;$i++){
             $answer= new Answer;
             $answer->user_id = $answers['user'];
-//            dd($answers['user']);
             $answer->form_id = $id;
             $answer->question_id = $answers['q_id'][$i];
-//            dd($answers['q_id'][$i]);
-            $answer->answer = $answers['arr'][$i];
-//            dd($answers['arr'][$i]);
+            $answer->answer = $answers['data'][$i];
             $answer->save();
-//            dd($answer);
         }
-//        dd($answers);
+        $form = Form::find($id);
+        $form->quota = ($form->quota)-1;
+        $form->save();
+        $user=User::find($answers['user']);
+//        dd($user);
+        $wallet = Wallet::find($user->wallet_id);
+//        dd($wallet);
+        $wallet->points = $wallet->points + $form->points;
+        $wallet->save();
+        $history = new History;
+        $history->user_id = $user->id;
+        $history->form_id = $id;
+        $history->save();
         return response()->json($count);
     }
 

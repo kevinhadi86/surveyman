@@ -12,7 +12,11 @@
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
 </head>
 <body>
-
+<a href="{{url('/surveylist')}}">
+    <button class="btn btn-primary" type="submit">
+        Survey List
+    </button>
+</a>
     <main class="py-4">
         <div class="container">
             <div class="row justify-content-center">
@@ -24,6 +28,22 @@
                             <div>
                                 <input type="text" name="descriptionForm" placeholder="{{$form->description}}"
                                        onchange="descriptionChange({{$form->id}},$(this).val())">
+                            </div>
+                            <div>
+                                <input type="text" name="pointsForm" placeholder="Points: {{$form->points}}"
+                                       onchange="pointsChange({{$form->id}},$(this).val())">
+                            </div>
+                            <div>
+                                <input type="text" name="quotaForm" placeholder="Quota: {{$form->quota}}"
+                                       onchange="quotaChange({{$form->id}},$(this).val())">
+                            </div>
+                            <div>
+                                <select onchange="tagChange({{$form->id}},$(this).val())">
+                                    <option>Select Tag</option>
+                                    @foreach($tags as $tag)
+                                        <option value="{{$tag->name}}">{{$tag->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -236,6 +256,46 @@
             },
             success: function(data){
                 console.log("Form Title Changed");
+            }
+        });
+    }
+    function pointsChange(id,value){
+        let url = "{{url('api/form')}}"+"/"+id+"/update/points";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                value: value,
+            },
+            success: function(data){
+                console.log("Form Points Changed");
+            }
+        });
+    }
+    function quotaChange(id,value){
+        let url = "{{url('api/form')}}"+"/"+id+"/update/quota";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                value: value,
+            },
+            success: function(data){
+                console.log("Form Quota Changed");
+            }
+        });
+    }
+    function tagChange(id,value){
+        console.log(value);
+        let url = "{{url('api/form')}}"+"/"+id+"/update/tag";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                value: value,
+            },
+            success: function(data){
+                console.log("Form Tag Changed");
             }
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Form;
+use App\FormTag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -40,6 +41,7 @@ class FormController extends Controller
         $form->user_id = Session::get('user_id');
         $form->title = "Untitled Form";
         $form->description = "No Description";
+        $form->totalpoints = 0;
         $form->points = 0;
         $form->quota = 0;
         $form->save();
@@ -80,6 +82,39 @@ class FormController extends Controller
         $form = Form::find($id);
         $form->title = $request->value;
         $form->save();
+        return response()->json($form);
+    }
+    public function updatePoints(Request $request, Form $form, $id)
+    {
+        $form = Form::find($id);
+        $form->totalpoints = $request->value;
+        if($form->quota !=0){
+            $form->points = $form->totalpoints / $form->quota;
+        }
+        $form->save();
+        return response()->json($form);
+    }
+    public function updateQuota(Request $request, Form $form, $id)
+    {
+        $form = Form::find($id);
+        $form->quota = $request->value;
+        $form->points = $form->totalpoints / $form->quota;
+        $form->save();
+        return response()->json($form);
+    }
+    public function updateTag(Request $request, $id)
+    {
+        $form = Form::find($id);
+        if(!($form->tag)){
+            $form_tag = new FormTag;
+            $form_tag->form_id = $id;
+            $form_tag->tag = $request->value;
+            $form_tag->save();
+        }else{
+            $form_tag = $form->tag;
+            $form_tag->tag=$request->value;
+            $form_tag->save();
+        }
         return response()->json($form);
     }
     public function updateDescription(Request $request, Form $form, $id)

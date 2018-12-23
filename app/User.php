@@ -37,4 +37,7 @@ class User extends Authenticatable
     public function forms(){
         return $this->hasMany('App\Form');
     }
+    public function wallet(){
+        return $this->hasOne('App\Wallet');
+    }
 }

@@ -30,6 +30,11 @@
                     Change profile
                 </button>
             </a>
+            <a href="{{url('/exchangepoints')}}">
+                <button class="btn btn-primary" type="submit">
+                    Exchange Points
+                </button>
+            </a>
         </div>
         <div class="card-body">
             <h1>History</h1>
@@ -43,12 +48,16 @@
                     </tr>
                 </thead>
                 <tbody>
+                <?php $no=0?>
+                @foreach($forms as $form)
+                    <?php $no++?>
                     <tr>
-                        <td>1</td>
-                        <td>Title 1</td>
-                        <td>Description 1</td>
-                        <td>1000</td>
+                        <td>{{$no}}</td>
+                        <td>{{$form->title}}</td>
+                        <td>{{$form->description}}</td>
+                        <td>{{$form->points}}</td>
                     </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

@@ -11,6 +11,9 @@ class Tag extends Model
     ];
 
     public function users(){
-        return $this->hasMany('App\User');
+        return $this->hasMany('App\UserTag');
+    }
+    public function tags(){
+        return $this->hasMany('App\FormTag');
     }
 }

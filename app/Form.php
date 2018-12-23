@@ -12,4 +12,7 @@ class Form extends Model
     public function questions(){
         return $this->hasMany('App\Question');
     }
+    public function tag(){
+        return $this->hasOne('App\FormTag');
+    }
 }

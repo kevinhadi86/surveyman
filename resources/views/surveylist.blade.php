@@ -30,6 +30,11 @@
                     Change profile
                 </button>
             </a>
+            <a href="{{url('/exchangepoints')}}">
+                <button class="btn btn-primary" type="submit">
+                    Exchange Points
+                </button>
+            </a>
             <form action="{{url('/logout')}}" method="get" accept-charset="utf-8">
                 <button class="btn btn-danger">Logout</button>
             </form>

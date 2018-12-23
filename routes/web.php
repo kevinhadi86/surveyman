@@ -25,3 +25,8 @@ Route::post('/form','FormController@store');
 Route::get('/form/{id}/question','QuestionController@index');
 Route::get('/form/{id}/question/answer','AnswerController@index');
 Route::delete('form/delete/{id}','FormController@destroy');
+
+Route::get('/exchangepoints','WalletController@index')->middleware(\App\Http\Middleware\LoginMiddleware::class);
+Route::post('/exchangepoints/{id}','WalletController@store');
+Route::post('/exchangepoints/add/{id}','WalletController@add');
+Route::post('/exchangepoints/sub/{id}','WalletController@sub');

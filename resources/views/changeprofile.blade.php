@@ -30,6 +30,11 @@
                     Change profile
                 </button>
             </a>
+            <a href="{{url('/exchangepoints')}}">
+                <button class="btn btn-primary" type="submit">
+                    Exchange Points
+                </button>
+            </a>
         </div>
         <div class="card-body">
             <h1>Change Profile</h1>
@@ -37,11 +42,11 @@
                 {{csrf_field()}}
                 <div class="signUpForm">
                     <div class="nameForm padV10p">
-                        <input type="text" name="firstname" placeholder="First Name" value="{{$user->firstname}}">
-                        <input type="text" name="lastname" placeholder="Last Name" value="{{$user->lastname}}">
+                        <input type="text" name="firstname" placeholder="{{$user->firstname}}" value="{{$user->firstname}}">
+                        <input type="text" name="lastname" placeholder="{{$user->lastname}}" value="{{$user->lastname}}">
                     </div>
                     <div class="emailForm padV10p">
-                        <input type="text" name="email" placeholder="Email" value="{{$user->email}}">
+                        <input type="text" name="email" placeholder="{{$user->email}}" value="{{$user->email}}">
                     </div>
                     <div class="genderForm padV10p">
                         <div class="genderMale">
@@ -58,7 +63,7 @@
                         <input type="date" name="birthdate" min="1900-01-01" max="2018-12-31" value="{{$user->birthdate}}">
                     </div>
                     <div class="occupationForm padV10p">
-                        <input type="text" name="occupation" placeholder="Occupation" value="{{$user->occupation}}">
+                        <input type="text" name="occupation" placeholder="{{$user->occupation}}" value="{{$user->occupation}}">
                     </div>
                     <div>
                         <select name="tag">
@@ -67,6 +72,9 @@
                                 <option value="{{$tag->name}}">{{$tag->name}}</option>
                             @endforeach
                         </select>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Update Rekening" name="rekening">
                     </div>
                 </div>
                 <button type="submit" class="signUpButton">

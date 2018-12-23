@@ -27,6 +27,9 @@ Route::post('/form/{option_id}/question/update/option','QuestionOptionController
 Route::delete('/form/question/option/{id}/delete','QuestionOptionController@destroy');
 //form
 Route::post('/form/{id}/update/title','FormController@updateTitle');
+Route::post('/form/{id}/update/points','FormController@updatePoints');
+Route::post('/form/{id}/update/quota','FormController@updateQuota');
+Route::post('/form/{id}/update/tag','FormController@updateTag');
 Route::post('/form/{id}/update/description','FormController@updateDescription');
 
 //Answer

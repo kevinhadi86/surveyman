@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Form;
+use App\History;
+use App\Wallet;
 use Illuminate\Http\Request;
 use App\User;
 use App\Tag;
@@ -15,11 +17,29 @@ class UserController extends Controller
         return view('home');
     }
     public function showSurveyList(){
+        $user = User::find(Session::get('user_id'));
+        if(!($user->wallet)) {
+            $wallet = new Wallet;
+            $wallet->user_id = $user->id;
+            $wallet->points = 0;
+            $wallet->rekening = "";
+            $wallet->save();
+            $wallet = Wallet::where('user_id',$user->id)->first();
+            $user->wallet_id = $wallet->id;
+            $user->save();
+        }
         $forms = Form::all();
         return view('surveylist',compact('forms'));
     }
     public function showHistory(){
-        return view('history');
+        $histories = History::where('user_id',Session::get('user_id'))->get();
+        $forms = [];
+        foreach($histories as $history){
+            $form = Form::find($history->form_id);
+            array_push($forms,$form);
+        };
+//        dd($forms);
+        return view('history', compact('forms'));
     }
     public function edit(){
         $tags=Tag::all();
@@ -38,9 +58,19 @@ class UserController extends Controller
         $user->birthdate = $request->birthdate;
         $user->occupation = $request->occupation;
         $user->save();
-        $user_tag = $user->tag;
-        $user_tag->tag=$request->tag;
-        $user_tag->save();
+        if(!($user->tag)){
+            $user_tag = new UserTag;
+            $user_tag->user_id = $user->id;
+            $user_tag->tag = $request->tag;
+            $user_tag->save();
+        }else{
+            $user_tag = $user->tag;
+            $user_tag->tag=$request->tag;
+            $user_tag->save();
+        }
+        $wallet = $user->wallet;
+        $wallet->rekening = $request->rekening;
+        $wallet->save();
 
         return redirect('/surveylist');
     }
@@ -49,7 +79,7 @@ class UserController extends Controller
     }
     public function login(Request $request){
     	$data = User::where('email',$request->email)->first();
-    	if(count($data)>0){
+    	if(!empty($data)){
     		if ($request->password == $data->password) {
     			Session::put('user_id', $data->id);
     			Session::put('name', $data->firstname);

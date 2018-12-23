@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta id="token" name="csrf-token" content="{{ csrf_token() }}">
+    {{--<meta id="token" name="csrf-token" content="{{ csrf_token() }}">--}}
     <title>Answer</title>
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
@@ -17,6 +17,11 @@
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
+            <a href="{{url('/surveylist')}}">
+                <button class="btn btn-primary" type="submit">
+                    Survey List
+                </button>
+            </a>
             <h1>{{$form->title}}</h1>
             <h2>{{$form->description}}</h2>
             <?php $user_id=\Illuminate\Support\Facades\Session::get('user_id') ?>
@@ -41,7 +46,9 @@
                 </div>
             @endforeach
                 <div class="counter" id="{{$count}}"></div>
-        <button type=submit>Submit</button>
+        @if($form->user_id != $user_id)
+            <button type=submit>Submit</button>
+        @endif
         </form>
     </div>
 </div>
@@ -57,7 +64,6 @@
             let id = [];
             let count = $('.counter').attr('id');
             let user_id = $('.card-body').attr('id');
-            // console.log(user_id);
             for(let i=0;i<count;i++){
                 {{--console.log("count: {{$count}}");--}}
                 // console.log("i: "+i);
@@ -74,29 +80,25 @@
                     // console.log($('#answer'+(i+1)).attr('class'));
                     arr[i] = $('input[name="answer'+question_id+'"]').val();
                 }
-                // console.log("arr["+i+"]: "+arr[i]);
-                let url = "{{url('api/form')}}"+"/"+"{{$form->id}}"+"/answer/submit";
-                {{--let url= "http://localhost/surveyman/public/api/form/{{$form->id}}/answer/submit";--}}
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    url:url,
-                    type: "POST",
-                    data: {
-                        'user':user_id,
-                        'q_id':id,
-                        'data':arr,
-                    },
-                    success: function(resp){
-                        console.log(resp);
-                        alert("Berhasil!");
-                    }
-                });
-                e.preventDefault();
             }
-        })
-    })
+            // console.log("arr["+i+"]: "+arr[i]);
+            let url = "{{url('api/form')}}"+"/"+"{{$form->id}}"+"/answer/submit";
+            $.ajax({
+                url:url,
+                type: "POST",
+                data: {
+                    'user':user_id,
+                    'q_id':id,
+                    'data':arr
+                },
+                success: function(resp){
+                    console.log(resp);
+                    alert("Berhasil!");
+                }
+            });
+            e.preventDefault();
+        });
+    });
 </script>
 </body>
 </html>
