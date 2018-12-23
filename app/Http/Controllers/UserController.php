@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Form;
+use App\FormTag;
 use App\History;
 use App\Wallet;
 use Illuminate\Http\Request;
@@ -28,8 +29,15 @@ class UserController extends Controller
             $user->wallet_id = $wallet->id;
             $user->save();
         }
+        $user_tag = $user->tag->tag;
         $forms = Form::all();
-        return view('surveylist',compact('forms'));
+//        $form_tag = [];
+//        foreach($forms as $form){
+//            $tag = Form::find($history->form_id);
+//            array_push($forms,$form);
+//        };
+//        dd($form_tag);
+        return view('surveylist',compact('forms','user_tag'));
     }
     public function showHistory(){
         $histories = History::where('user_id',Session::get('user_id'))->get();
