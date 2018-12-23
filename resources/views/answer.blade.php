@@ -81,7 +81,6 @@
                     arr[i] = $('input[name="answer'+question_id+'"]').val();
                 }
             }
-<<<<<<< HEAD
             // console.log("arr["+i+"]: "+arr[i]);
             let url = "{{url('api/form')}}"+"/"+"{{$form->id}}"+"/answer/submit";
             $.ajax({
@@ -98,26 +97,8 @@
                 }
             });
             e.preventDefault();
-=======
-                // console.log("arr["+i+"]: "+arr[i]);
-                let url = "{{url('api/form')}}"+"/"+"{{$form->id}}"+"/answer/submit";
-                $.ajax({
-                    url:url,
-                    type: "POST",
-                    data: {
-                        'user':user_id,
-                        'q_id':id,
-                        'data':arr,
-                        '_token' : '{{csrf_field()}}',
-                    },
-                    success: function(resp){
-                        console.log(resp);
-                        alert("Berhasil!");
-                    }
-                });
->>>>>>> 8d030c44635b829f4137d25788bc0089c52a6542
         });
     });
 </script>
 </body>
-</html>
+</html> 
