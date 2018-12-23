@@ -47,12 +47,22 @@ class AnswerController extends Controller
     {
         $answers=$request->all();
         $count = count($answers['data']);
+<<<<<<< HEAD
+=======
+//        dd($request->user);
+>>>>>>> 8d030c44635b829f4137d25788bc0089c52a6542
         for($i=0;$i<$count;$i++){
             $answer= new Answer;
             $answer->user_id = $answers['user'];
             $answer->form_id = $id;
             $answer->question_id = $answers['q_id'][$i];
+<<<<<<< HEAD
             $answer->answer = $answers['data'][$i];
+=======
+//            dd($answers['q_id'][$i]);
+            $answer->answer = $answers['data'][$i];
+//            dd($answers['arr'][$i]);
+>>>>>>> 8d030c44635b829f4137d25788bc0089c52a6542
             $answer->save();
         }
         $form = Form::find($id);
