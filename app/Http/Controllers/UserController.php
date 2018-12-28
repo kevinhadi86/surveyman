@@ -29,7 +29,7 @@ class UserController extends Controller
             $user->wallet_id = $wallet->id;
             $user->save();
         }
-        $user_tag = $user->tag->tag;
+
         $forms = Form::all();
 //        $form_tag = [];
 //        foreach($forms as $form){
@@ -37,7 +37,7 @@ class UserController extends Controller
 //            array_push($forms,$form);
 //        };
 //        dd($form_tag);
-        return view('surveylist',compact('forms','user_tag'));
+        return view('surveylist',compact('forms'));
     }
     public function showHistory(){
         $histories = History::where('user_id',Session::get('user_id'))->get();
@@ -71,12 +71,16 @@ class UserController extends Controller
             $user_tag->user_id = $user->id;
             $user_tag->tag = $request->tag;
             $user_tag->save();
+            Session::put('tag',$user_tag->tag);
         }else{
             $user_tag = $user->tag;
             $user_tag->tag=$request->tag;
             $user_tag->save();
+            Session::forget('tag');
+            Session::put('tag',$user_tag->tag);
         }
         $wallet = $user->wallet;
+//        dd($wallet);
         $wallet->rekening = $request->rekening;
         $wallet->save();
 

@@ -122,47 +122,67 @@
                         </thead>
                         <tbody>
                         <?php $no=0?>
-                        @foreach($forms as $form)
+                        @if(!(\Illuminate\Support\Facades\Session::get('tag')))
+                            @foreach($forms as $form)
                             @if($form->user_id != \Illuminate\Support\Facades\Session::get('user_id'))
-                                <?php $form_tag = $form->tag;?>
-                                @if($form_tag->tag == $user_tag)
-                                    <?php $no++?>
-                                    <tr>
-                                        <td>{{$no}}</td>
-                                        <td>{{$form->title}}</td>
-                                        <td>{{$form->description}}</td>
-                                        <td>{{$form->points}}</td>
-                                        <td>{{$form->quota}}</td>
-                                        <td>
-                                            <a href="{{url('form/'.$form->id.'/question/answer')}}">
-                                                <button type="button" class="btn btn-primary">Isi</button>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                @endif
+                                <?php $no++?>
+                                <tr>
+                                    <td>{{$no}}</td>
+                                    <td>{{$form->title}}</td>
+                                    <td>{{$form->description}}</td>
+                                    <td>{{$form->points}}</td>
+                                    <td>{{$form->quota}}</td>
+                                    <td>
+                                        <a href="{{url('form/'.$form->id.'/question/answer')}}">
+                                            <button type="button" class="btn btn-primary">Isi</button>
+                                        </a>
+                                    </td>
+                                </tr>
                             @endif
                         @endforeach
-                        @foreach($forms as $form)
-                            @if($form->user_id != \Illuminate\Support\Facades\Session::get('user_id'))
-                                <?php $form_tag = $form->tag;?>
-                                @if($form_tag->tag != $user_tag)
-                                    <?php $no++?>
-                                    <tr>
-                                        <td>{{$no}}</td>
-                                        <td>{{$form->title}}</td>
-                                        <td>{{$form->description}}</td>
-                                        <td>{{$form->points}}</td>
-                                        <td>{{$form->quota}}</td>
-                                        <td>
-                                            <a href="{{url('form/'.$form->id.'/question/answer')}}">
-                                                <button type="button" class="btn btn-primary">Isi</button>
-                                            </a>
-                                        </td>
-                                    </tr>
+                        @else
+                            @foreach($forms as $form)
+                                @if($form->user_id != \Illuminate\Support\Facades\Session::get('user_id'))
+                                    <?php $form_tag = $form->tag;?>
+                                    @if($form_tag->tag == \Illuminate\Support\Facades\Session::get('tag'))
+                                        <?php $no++?>
+                                        <tr>
+                                            <td>{{$no}}</td>
+                                            <td>{{$form->title}}</td>
+                                            <td>{{$form->description}}</td>
+                                            <td>{{$form->points}}</td>
+                                            <td>{{$form->quota}}</td>
+                                            <td>
+                                                <a href="{{url('form/'.$form->id.'/question/answer')}}">
+                                                    <button type="button" class="btn btn-primary">Isi</button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 @endif
-                                //cek kalo dia tagnya sama ngk kae user punya
-                            @endif
-                        @endforeach
+                            @endforeach
+                            @foreach($forms as $form)
+                                @if($form->user_id != \Illuminate\Support\Facades\Session::get('user_id'))
+                                    <?php $form_tag = $form->tag;?>
+                                    @if($form_tag->tag != \Illuminate\Support\Facades\Session::get('tag'))
+                                        <?php $no++?>
+                                        <tr>
+                                            <td>{{$no}}</td>
+                                            <td>{{$form->title}}</td>
+                                            <td>{{$form->description}}</td>
+                                            <td>{{$form->points}}</td>
+                                            <td>{{$form->quota}}</td>
+                                            <td>
+                                                <a href="{{url('form/'.$form->id.'/question/answer')}}">
+                                                    <button type="button" class="btn btn-primary">Isi</button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endif
+                                    //cek kalo dia tagnya sama ngk kae user punya
+                                @endif
+                            @endforeach
+                        @endif
                         </tbody>
                     </table>
                 @else
