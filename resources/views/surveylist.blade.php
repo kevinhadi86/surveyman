@@ -35,6 +35,11 @@
                     Exchange Points
                 </button>
             </a>
+            <a href="{{url('/viewanswer')}}">
+                <button class="btn btn-primary" type="submit">
+                    View Answer
+                </button>
+            </a>
             <form action="{{url('/logout')}}" method="get" accept-charset="utf-8">
                 <button class="btn btn-danger">Logout</button>
             </form>
