@@ -88,6 +88,11 @@
                     </div>
 
                 </div>
+                <div style="color: red;">
+                    @if(isset($errors))
+                        {{$errors->first()}}
+                    @endif
+                </div>
                 <button type="submit" class="signUpButton">
                     Sign Up
                 </button>

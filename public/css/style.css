@@ -39,13 +39,6 @@ header
 	display: none;
 }
 
-.w100
-{
-	width: 100%;
-}
-.margin0{
-	margin: 0;
-}
 .cursorPointer
 {
 	cursor: pointer;
@@ -141,6 +134,7 @@ nav
 .LoginButton, .RegisterButton
 {
 	display: flex;
+	display: flex;
 	align-items: center;
 	padding: 0 15px;
 	height: 35px;
@@ -208,6 +202,7 @@ nav
 	font-size: 25px;
 	font-weight: bold;
 	width: 100%;
+	padding: 5px 5px;
 	text-align: center;
 }
 
@@ -406,7 +401,7 @@ nav
 
 .descriptionContainer
 {
-	right: 0;
+	right: 0%;
 	width: 300%;
 	height: 150px;
 	display: flex;
@@ -511,7 +506,8 @@ nav
 	border-radius: 300px;
 	width: 100px;
 	height: 100px;
-	margin: 15% auto 0;
+	margin: 0 auto;
+	margin-top: 15%;
 }
 
 .memberImgContainer img
@@ -597,7 +593,8 @@ nav
 	cursor: pointer;
 	height: 16px;
 	width: 16px;
-	margin: 0 5px 0 0;
+	margin: 0;
+	margin-right: 5px;
 }
 
 .birthForm input
@@ -634,7 +631,8 @@ nav
 {
 	height: 83vh;
 	width: 40%;
-	background: url(../assets/ilustrasisignup.jpg) round;
+	background-image: url('../assets/ilustrasisignup.jpg');
+	background-repeat: round;
 	position: absolute;
 	top: 10vh;
 	left: 10%;
@@ -649,6 +647,435 @@ nav
 	bottom: 10vh;
 }
 
+.minH83VH
+{
+	min-height: 83vh;
+}
+
+.minH23VH
+{
+	min-height: 23vh;
+}
+
+.minH60VH
+{
+	min-height: 60vh;
+}
+
+.grayBox
+{
+	border: 3px solid #cccccc;
+}
+
+.greenBox
+{
+	border: 3px solid #42b549;
+}
+
+.grayBG
+{
+	background-color: #cccccc;
+}
+
+.whiteBG
+{
+	background-color: #FFFFFF;
+}
+
+.grayLine
+{
+	border-width: 0 0 3px 0;
+	border-style: solid;
+	border-color: #cccccc;
+}
+
+.grayVLine
+{
+	border-width: 0 3px 0 0;
+	border-style: solid;
+	border-color: #cccccc;
+}
+
+.greenLine
+{
+	border-width: 3px 0 0 0;
+	border-style: solid;
+	border-color: #42b549;
+}
+
+.grayText
+{
+	color: #cccccc;
+}
+
+.redText
+{
+	color: #FF0000;
+}
+
+.boldTxt
+{
+	font-weight: bold;
+}
+
+.bzBox
+{
+	box-sizing: border-box;
+}
+
+.margH5c
+{
+	margin: 0 5%;
+}
+
+.dFlex
+{
+	display: flex;
+}
+
+.dBlock
+{
+	display: block;
+}
+
+.dNone
+{
+	display: none;
+}
+
+.w40c
+{
+	width: 40%;
+}
+
+.w45c
+{
+	width: 45%;
+}
+
+.w50c
+{
+	width: 50%;
+}
+
+.w60c
+{
+	width: 60%;
+}
+
+.w80c
+{
+	width: 80%;
+}
+
+.w90c
+{
+	width: 90%;
+}
+
+.w75c
+{
+	width: 75%;
+}
+
+.w100c
+{
+	width: 100%;
+}
+
+.w25c
+{
+	width: 25%;
+}
+
+.h25c
+{
+	height: 25%;
+}
+
+.h5c
+{
+	height: 5%;
+}
+
+.h10c
+{
+	height: 10%;
+}
+
+.h30c
+{
+	height: 30%;
+}
+
+.h40c
+{
+	height: 40%;
+}
+
+.h45c
+{
+	height: 45%;
+}
+
+.h50c
+{
+	height: 50%;
+}
+
+.h60c
+{
+	height: 60%;
+}
+
+.h70c
+{
+	height: 70%;
+}
+
+.h75c
+{
+	height: 75%;
+}
+
+.h80c
+{
+	height: 80%;
+}
+
+.h95c
+{
+	height: 95%;
+}
+
+.h100c
+{
+	height: 100%;
+}
+
+.w20c
+{
+	width: 20%;
+}
+
+.w10c
+{
+	width: 10%;
+}
+
+.wh50p
+{
+	width: 50px;
+	height: 50px;
+}
+
+.padA5p
+{
+	padding: 5px;
+}
+
+.padA10p
+{
+	padding: 10px;
+}
+
+.padA3p
+{
+	padding: 3px;
+}
+
+.dbMenuItem
+{
+	display: flex;
+	height: 10%;
+	width: 100%;
+	font-weight: bold;
+	justify-content: flex-start;
+	padding-left: 20%;
+	align-items: center;
+}
+
+.dbMenuItem:hover
+{
+	background-color: #82f589;
+}
+
+.dbActiveMenu
+{
+	background-color: #82f589;
+}
+
+.fs12p
+{
+	font-size: 12px;
+}
+
+.fs14p
+{
+	font-size: 14px;
+}
+
+.fs16p
+{
+	font-size: 16px;
+}
+.fs18p
+{
+	font-size: 18px;
+}
+
+.boldFont
+{
+	font-weight: bold;
+}
+
+.pad0marg0
+{
+	padding: 0;
+	margin: 0;
+}
+
+.marg0Auto
+{
+	margin: 0 auto;
+}
+
+.dbContent
+{
+	margin: 10px 0;
+	margin-right: 10px;
+}
+
+.alignCenter
+{
+	align-items: center;
+}
+
+.margA3c
+{
+	margin: 3%;
+}
+
+.margA10p
+{
+	margin: 10px;
+}
+
+.margA3p
+{
+	margin: 3px;
+}
+
+.margA5c
+{
+	margin: 5%;
+}
+
+.margH10c
+{
+	margin: 0 10%;
+}
+
+.fAlignCenter
+{
+	align-items: center;
+}
+
+.fAlignStart
+{
+	align-items: flex-start;
+}
+
+.fAlignSelfCenter
+{
+	align-self: center;
+}
+
+.fBasis100
+{
+	flex-basis: 100%;
+}
+
+.borderNone
+{
+	border: none;
+}
+
+.borderGreen
+{
+	border: 2px solid #42b549;
+}
+
+.borderRed
+{
+	border: 2px solid #FF0000;
+}
+
+.bgRed
+{
+	background-color: #FF0000;
+}
+
+.justifySpaceAround
+{
+	justify-content: space-around;
+}
+
+.justifySpaceBetween
+{
+	justify-content: space-between;
+}
+
+.justifyFlexStart
+{
+	justify-content: flex-start;
+}
+
+.justifyFlexEnd
+{
+	justify-content: flex-end;
+}
+
+.justifyCenter
+{
+	justify-content: center;
+}
+
+.flexDirCol
+{
+	flex-direction: column;
+}
+
+.bgGreen
+{
+	background-color: #42b549;
+}
+
+.borderRad
+{
+	border-radius: 5px;
+}
+
+.textCenter
+{
+	text-align: center;
+}
+
+.circleBG
+{
+	border-radius: 300px;
+}
+
+.redXButton
+{
+	border-radius: 100px;
+	background-color: #FF0000;
+	border: 1px solid #FF0000;
+	font-size: 14px;
+	font-weight: bold;
+	color: white;
+}
+
 footer
 {
 	height: 7vh;
@@ -656,4 +1083,39 @@ footer
 	position: sticky;
 	bottom: 0;
 	z-index: 100;
+}
+.scrollbar
+{
+	margin-left: 30px;
+	float: left;
+	height: 300px;
+	width: 95%;
+	background: #F5F5F5;
+	overflow-y: scroll;
+	margin-bottom: 25px;
+	margin-top: 10px;
+}
+
+.force-overflow
+{
+	min-height: 50px;
+}
+#style-1::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+#style-1::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #FFFFFF;
+}
+
+#style-1::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
 }

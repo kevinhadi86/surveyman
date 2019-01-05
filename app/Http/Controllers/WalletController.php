@@ -47,6 +47,7 @@ class WalletController extends Controller
     }
     public function add(Request $request, $id){
         $wallet = Wallet::find($id);
+//        dd($request->points);
         $wallet->points = $wallet->points+$request->points;
         $wallet->save();
         return redirect('/exchangepoints');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Form;
 use App\FormTag;
+use App\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -87,12 +88,16 @@ class FormController extends Controller
     public function updatePoints(Request $request, Form $form, $id)
     {
         $form = Form::find($id);
+        $wallet = Wallet::where('user_id',$form->user->id)->first();
         $form->totalpoints = $request->value;
+        $wallet->points = ($wallet->points)-($form->totalpoints);
+        dd($wallet->points);
+        $wallet->save();
         if($form->quota !=0){
             $form->points = $form->totalpoints / $form->quota;
         }
         $form->save();
-        return response()->json($form);
+        return response()->json($wallet);
     }
     public function updateQuota(Request $request, Form $form, $id)
     {

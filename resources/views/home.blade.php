@@ -17,6 +17,17 @@
 	</div>
 	<div class="navContainer">
 		<nav>
+		@if(\Illuminate\Support\Facades\Session::get('user_id'))
+			<div class="navItems cursorPointer active" id="navHome"">
+				Home
+			</div>
+			<div class="navItems cursorPointer" id="navServices">
+				<a href="{{url('/surveylist')}}">Survey List</a>
+			</div>
+			<div class="navItems cursorPointer" id="navAbout">
+				<a href="{{url('/exchangepoints')}}">Exchange</a>
+			</div>
+		@else
 			<div class="navItems cursorPointer active" id="navHome" onclick="changeNav('navHome')">
 				Home
 			</div>
@@ -26,10 +37,22 @@
 			<div class="navItems cursorPointer" id="navAbout" onclick="changeNav('navAbout')">
 				About
 			</div>
+		@endif
 		</nav>
 		<div class="searchBar">
 			<input type="text" name="surveySearch">
 		</div>
+		@if(\Illuminate\Support\Facades\Session::get('user_id'))
+			<div class="accountManagement">
+				<div class="LoginButton">
+					<form action="{{url('/logout')}}" method="get" accept-charset="utf-8">
+						<button type="submit" class="borderGreen bgGreen borderRad padA5p boldTxt cursorPointer w80c" id="">
+							Logout
+						</button>
+					</form>
+				</div>
+			</div>
+		@else
 		<div class="accountManagement">
 			<a href="{{url('/login')}}">
 				<div class="LoginButton yellowHover">
@@ -42,6 +65,7 @@
 				</div>
 			</a>
 		</div>
+		@endif
 	</div>
 </header>
 
@@ -73,9 +97,7 @@
 						<img src="{{asset('assets/easy.png')}}">
 					</div>
 					<div class="advantageText">
-						dbsbdkjsahdusjdjsanndsan<br>
-						djsnajkdnsakjdnjsakndsjdn<br>
-						djksdksndjksnadjksndjjndsj
+						Get Easy Money to Boost your Bussiness
 					</div>
 				</div>
 				<div class="advantageContent">
@@ -86,9 +108,7 @@
 						<img src="{{asset('assets/price.png')}}">
 					</div>
 					<div class="advantageText">
-						dbsbdkjsahdusjdjsanndsan<br>
-						djsnajkdnsakjdnjsakndsjdn<br>
-						djksdksndjksnadjksndjjndsj
+						Goin the advantage that your rivals missed out
 					</div>
 				</div>
 				<div class="advantageContent">
@@ -99,9 +119,7 @@
 						<img src="{{asset('assets/time.png')}}">
 					</div>
 					<div class="advantageText">
-						dbsbdkjsahdusjdjsanndsan<br>
-						djsnajkdnsakjdnjsakndsjdn<br>
-						djksdksndjksnadjksndjjndsj
+						Efficient your way to achive your goals
 					</div>
 				</div>
 			</div>
@@ -123,67 +141,31 @@
 				Survey
 			</div>
 			<div class="surveyList">
+				@foreach($forms as $form)
 				<div class="surveyItem">
 					<div class="surveyIcon">
-
+						<img src="{{asset('assets/coin.png')}}" width="100%" height="100%">
 					</div>
 					<div class="surveyText">
 						<div class="surveyTitle">
-							Survey Title
-						</div>
-						<div class="surveyAuthor">
-							Survey Author
+							{{$form->title}}
 						</div>
 						<div class="surveyDescription">
-							Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey
+							{{$form->description}}
+						</div>
+						<div class="surveyAuthor">
+							Author: {{$form->user->firstname}}
 						</div>
 					</div>
 					<div class="joinButton">
 						Join
 					</div>
 				</div>
-				<div class="surveyItem">
-					<div class="surveyIcon">
-
-					</div>
-					<div class="surveyText">
-						<div class="surveyTitle">
-							Survey Title
-						</div>
-						<div class="surveyAuthor">
-							Survey Author
-						</div>
-						<div class="surveyDescription">
-							Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey
-						</div>
-					</div>
-					<div class="joinButton">
-						Join
-					</div>
-				</div>
-				<div class="surveyItem">
-					<div class="surveyIcon">
-
-					</div>
-					<div class="surveyText">
-						<div class="surveyTitle">
-							Survey Title
-						</div>
-						<div class="surveyAuthor">
-							Survey Author
-						</div>
-						<div class="surveyDescription">
-							Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey Summary survey
-						</div>
-					</div>
-					<div class="joinButton">
-						Join
-					</div>
-				</div>
+				@endforeach
 			</div>
 			<div class="loadMoreContainer">
 				<div class="loadMoreButton">
-					Load More
+					<a href="{{url('/login')}}">Load More</a>
 				</div>
 			</div>
 		</div>
@@ -198,8 +180,7 @@
 							ABOUT US
 						</div>
 						<div class="aboutDescription">
-							Surveyman is blalblablablablansajnsjandsandjsndwesndioednjied<br>
-							dbshabdjasdjsandskjdkajdkldjbhbhkbjbjkbjbjbjjkbjkb
+							Surveyman is here to help you boost your business
 						</div>
 					</div>
 					<div class="descriptionText" id="aboutItem2">
@@ -207,8 +188,7 @@
 							VISION
 						</div>
 						<div class="aboutDescription">
-							Surveyman vision is blalblablablablansajnsjandsandjsndwesndioednjied<br>
-							dbshabdjasdjsandskjdkajdkldjbhbhkbjbjkbjbjbjjkbjkb
+							Surveyman vision is to be the number one survey platform to help other business
 						</div>
 					</div>
 					<div class="descriptionText" id="aboutItem3">
@@ -216,8 +196,7 @@
 							MISSION
 						</div>
 						<div class="aboutDescription">
-							Surveyman mission is blalblablablablansajnsjandsandjsndwesndioednjied<br>
-							dbshabdjasdjsandskjdkajdkldjbhbhkbjbjkbjbjbjjkbjkb
+							Surveyman mission is providing an efficient survey platform for other business
 						</div>
 					</div>
 

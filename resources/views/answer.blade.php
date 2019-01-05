@@ -8,50 +8,100 @@
     {{--<meta id="token" name="csrf-token" content="{{ csrf_token() }}">--}}
     <title>Answer</title>
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
+{{--    <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">--}}
     <script src="{{asset('js/jquery-3.3.1.js')}}"></script>
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    {{--<script src="{{asset('js/bootstrap.min.js')}}"></script>--}}
 </head>
 <body>
-
-<div class="container-fluid">
-    <div class="card">
-        <div class="card-header">
-            <a href="{{url('/surveylist')}}">
-                <button class="btn btn-primary" type="submit">
-                    Survey List
-                </button>
-            </a>
-            <h1>{{$form->title}}</h1>
-            <h2>{{$form->description}}</h2>
-            <?php $user_id=\Illuminate\Support\Facades\Session::get('user_id') ?>
+<header>
+    <div class="logo cursorPointer" onclick="goHome('navHome')">
+        <div class="icon">
+            <img src="{{asset('assets/Icon_SurveyMan.png')}}">
         </div>
-        <form class="card-body" id="{{$user_id}}">
-            {{csrf_field()}}
-            <?php $count=0?>
-            @foreach($questions as $question)
-                <?php $count++?>
-                <div id="answer{{$count}}" class="{{$question->type}}">
-<!--buat ambil tipe questionnya, pake id answer 1-seterusnya -->
-                    <h3 id="question{{$count}}" class="{{$question->id}}">{{$question->question}}</h3>
-                    <!--buat ambil id questionnya, pake id question 1-seterusnya-->
-                    @if($question->type == "Multiple Choice")
-                        @foreach($question->options as $option)
-                            <input type="radio" value="{{$option->option}}" name="answer{{$question->id}}">{{$option->option}}
-                            <!--buat ambil valuenya, pake name answer +question_id-->
-                        @endforeach
-                    @else
-                            <input type="text" name="answer{{$question->id}}">
-                    @endif
-                </div>
-            @endforeach
-                <div class="counter" id="{{$count}}"></div>
-        @if($form->user_id != $user_id)
-            <button type=submit>Submit</button>
-        @endif
-        </form>
+        <div class="brandName">
+            SurveyMan
+        </div>
     </div>
-</div>
+    <div class="navContainer">
+        <nav>
+            <div class="navItems cursorPointer" id="navHome" onclick="goHome('navHome')">
+                Home
+            </div>
+            <div class="navItems cursorPointer active" id="navServices">
+                <a href="{{url('/surveylist')}}">Survey List</a>
+            </div>
+            <div class="navItems cursorPointer" id="navAbout">
+                <a href="{{url('/exchangepoints')}}">Exchange</a>
+            </div>
+        </nav>
+        <div class="searchBar">
+            <input type="text" name="surveySearch">
+        </div>
+        <div class="accountManagement">
+            <div class="LoginButton">
+                <form action="{{url('/logout')}}" method="get" accept-charset="utf-8">
+                    <button type="submit" class="borderGreen bgGreen borderRad padA5p boldTxt cursorPointer w80c" id="">
+                        Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="py-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <!--bagian atas-->
+                    <main>
+                        <div class="margH5c minH83VH">
+                            <div class="grayBox minH23VH">
+                                <div style="margin-left: 5%">
+                                    <h1>{{$form->title}}</h1>
+                                    <h5>Points: {{$form->points}}</h5>
+                                    <h4>{{$form->description}}</h4>
+                                </div>
+
+                            </div>
+                            <div class="grayBox minH60VH">
+                                <div id="question-list">
+                                    <?php $user_id=\Illuminate\Support\Facades\Session::get('user_id') ?>
+                                    <form class="card-body" id="{{$user_id}}">
+                                        {{csrf_field()}}
+                                        <?php $count=0?>
+                                        @foreach($questions as $question)
+                                            <?php $count++?>
+                                            <div style="margin: 2%;" id="answer{{$count}}" class="{{$question->type}}">
+                                                <!--buat ambil tipe questionnya, pake id answer 1-seterusnya -->
+                                                <h1 id="question{{$count}}" class="{{$question->id}}">{{$question->question}}</h1>
+                                                <!--buat ambil id questionnya, pake id question 1-seterusnya-->
+                                                @if($question->type == "Multiple Choice")
+                                                    @foreach($question->options as $option)
+                                                        <input type="radio" value="{{$option->option}}" name="answer{{$question->id}}">{{$option->option}}
+                                                    <!--buat ambil valuenya, pake name answer +question_id-->
+                                                    @endforeach
+                                                @else
+                                                    <input type="text" class="boldTxt grayBox padA5p fs16p" name="answer{{$question->id}}">
+                                                @endif
+                                            </div>
+                                            <hr>
+                                        @endforeach
+                                        <div class="counter" id="{{$count}}"></div>
+                                        @if($form->user_id != $user_id)
+                                            <button class="borderGreen bgGreen borderRad padA5p boldTxt fs16p cursorPointer " style="margin-left:47%; !important" type=submit>Submit</button>
+                                        @endif
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 
 
 <script src="{{asset('js/script.js')}}"></script>

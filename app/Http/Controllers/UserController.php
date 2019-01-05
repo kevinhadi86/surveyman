@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Session;
 class UserController extends Controller
 {
     public function showHome(){
-        return view('home');
+        $forms = Form::all()->take(3);
+        return view('home',compact('forms'));
     }
     public function showSurveyList(){
         $user = User::find(Session::get('user_id'));
@@ -37,24 +38,21 @@ class UserController extends Controller
 //            array_push($forms,$form);
 //        };
 //        dd($form_tag);
-        return view('surveylist',compact('forms'));
+        return view('surveylist',compact('user','forms'));
     }
     public function showHistory(){
-        $histories = History::where('user_id',Session::get('user_id'))->get();
+        $user = User::find(Session::get('user_id'));
+        $histories = History::where('user_id',$user->id)->get();
         $forms = [];
         foreach($histories as $history){
             $form = Form::find($history->form_id);
             array_push($forms,$form);
         };
-//        dd($forms);
-        return view('history', compact('forms'));
+        return view('history', compact('user','forms'));
     }
     public function edit(){
         $tags=Tag::all();
         $user = User::find(Session::get('user_id'));
-//        $user_tag= $user->tag;
-//        $user_tag = $user->tag;
-//        dd($user);
         return view('changeprofile',compact('user','tags'));
     }
     public function update(Request $request, $id){

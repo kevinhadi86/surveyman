@@ -272,7 +272,7 @@ function changeNav(divId)
 function goHome(divId)
 {
     changeNavBar(divId);
-    window.location = "home";
+    window.location = "http://localhost/surveyman/public/home";
 }
 
 function changeNavBar(divId)

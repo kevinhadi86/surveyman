@@ -21,6 +21,7 @@ class AnswerController extends Controller
      */
     public function create($id)
     {
+
         $form = Form::find($id);
         $questions = Question::where('form_id',$form->id)->get();
 //        dd($questions);
@@ -71,14 +72,16 @@ class AnswerController extends Controller
      */
     public function index(Answer $answer)
     {
+        $user = User::find(Session::get('user_id'));
         $forms = Form::where('user_id',Session::get('user_id'))->get();
-        return view('viewanswer',compact('forms'));
+        return view('viewanswer',compact('user','forms'));
     }
     public function show($id){
+        $user=User::find(Session::get('user_id'));
         $form = Form::find($id);
         $questions = $form->questions;
         $answerforms = $form->answerforms;
-        return view('viewdetailanswer',compact('form','questions','answerforms'));
+        return view('viewdetailanswer',compact('user','form','questions','answerforms'));
     }
     public function statistic($id){
         $form = Form::find($id);
